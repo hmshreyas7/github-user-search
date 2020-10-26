@@ -19,3 +19,19 @@
   height: 3rem;
   width: 3rem;
 }
+
+.following-options {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.following-options p {
+  margin: 0;
+}
+
+.following-options button {
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+}
