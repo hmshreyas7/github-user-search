@@ -1,0 +1,19 @@
+.app-header {
+  align-items: center;
+  background: #000;
+  display: flex;
+  height: 5rem;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.app-header-link {
+  color: #fff;
+  margin-left: 2rem;
+}
+
+.app-header-input {
+  margin-left: 2rem;
+}

@@ -3,6 +3,7 @@ import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import Following from './components/Following';
 import Header from './components/Header';
 import Home from './components/Home';
+import './App.css';
 
 function App() {
   const [searchText, setSearchText] = useState('');
