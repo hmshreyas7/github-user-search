@@ -5,24 +5,29 @@ import '../styles/Following.css';
 const Following = (props) => {
   const [userFollowingInfo, setUserFollowingInfo] = useState({
     following: [],
+    numResults: 10,
   });
 
   useEffect(() => {
     const api = 'https://api.github.com/users';
 
     // Fetch results
-    const endPoint = `${api}/${props.user}/following?page=0&per_page=10`;
+    const endPoint = `${api}/${props.user}/following?page=0&per_page=${userFollowingInfo.numResults}`;
     const fetchGithubData = axios(endPoint, {})
       .then((response) => {
         const { data } = response;
-        setUserFollowingInfo({
-          following: data,
+        console.log(data);
+        setUserFollowingInfo((prevInfo) => {
+          return {
+            following: data,
+            numResults: prevInfo.numResults,
+          };
         });
       })
       .catch((error) => {
         console.log('Error');
       });
-  }, [props.user]);
+  }, [props.user, userFollowingInfo.numResults]);
 
   const generateFollowing = (followingUser) => {
     return (
@@ -35,8 +40,21 @@ const Following = (props) => {
     );
   };
 
+  const handleLoadMore = () => {
+    setUserFollowingInfo((prevInfo) => {
+      return {
+        ...userFollowingInfo,
+        numResults: prevInfo.numResults + 10,
+      };
+    });
+  };
+
   return (
     <div className='following-container'>
+      <div className='following-options'>
+        <p>Showing {userFollowingInfo.following.length}</p>
+        <button onClick={handleLoadMore}>Load more...</button>
+      </div>
       <ul>{userFollowingInfo.following.map(generateFollowing)}</ul>
     </div>
   );
