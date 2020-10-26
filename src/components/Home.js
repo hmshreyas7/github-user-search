@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
-const Home = () => {
-    const api = 'https://api.github.com/users/';
+const Home = (props) => {
+    const [userInfo, setUserInfo] = useState({
+        image: '',
+        githubName: '',
+        followers: 0,
+    });
+  const api = 'https://api.github.com/users';
 
-    // Fetch results
+  // Fetch results
+  const endPoint = `${api}/${props.user}`;
+  const fetchGithubData = axios(endPoint, {
+  }).then(response => {
+      const { data } = response;
+      setUserInfo({
+          image: data.avatar_url,
+          githubName: data.name,
+          followers: data.followers,
+      })
+  }).catch(error => {
+      console.log('Error');
+  });
 
-    return <div></div>;
-}
+  return <div>
+      <img src={userInfo.image} alt='GitHub User Avatar'></img>
+      <p>{userInfo.githubName}</p>
+      <p>Followers: {userInfo.followers}</p>
+  </div>;
+};
 
 export default Home;
