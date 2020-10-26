@@ -27,7 +27,7 @@ function App() {
   };
 
   return (
-    <div className='App'>
+    <div className='app'>
       <Header
         onSearchInputChange={handleChange}
         onSearch={handleSearch}

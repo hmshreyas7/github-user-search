@@ -1,0 +1,21 @@
+.following-container {
+  border: 1px solid black;
+  padding: 2rem;
+}
+
+.following-container li {
+  list-style-type: none;
+  padding: 1rem;
+}
+
+.following-container li div {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.following-container img {
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../styles/Following.css';
 
 const Following = (props) => {
   const [userFollowingInfo, setUserFollowingInfo] = useState({
@@ -35,7 +36,7 @@ const Following = (props) => {
   };
 
   return (
-    <div>
+    <div className='following-container'>
       <ul>{userFollowingInfo.following.map(generateFollowing)}</ul>
     </div>
   );

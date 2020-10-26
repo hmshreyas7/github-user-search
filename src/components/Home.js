@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../styles/Home.css';
 
 const Home = (props) => {
   const [userInfo, setUserInfo] = useState({
@@ -28,7 +29,7 @@ const Home = (props) => {
   }, [props.user]);
 
   return (
-    <div>
+    <div className='home-container'>
       <img src={userInfo.image} alt='GitHub User Avatar'></img>
       <p>{userInfo.githubName}</p>
       <p>Followers: {userInfo.followers}</p>
