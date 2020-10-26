@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import Following from './components/Following';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -7,6 +7,8 @@ import Home from './components/Home';
 function App() {
   const [searchText, setSearchText] = useState('');
   const [userName, setUserName] = useState('');
+  const history = useHistory();
+  const location = useLocation();
 
   const handleChange = (event) => {
     const inputValue = event.target.value;
@@ -17,6 +19,9 @@ function App() {
     if (event.code === 'Enter' || event.target.name === 'searchButton') {
       // Go to home page
       setUserName(searchText);
+      if (location.pathname === '/') {
+        history.push('/home');
+      }
     }
   };
 
